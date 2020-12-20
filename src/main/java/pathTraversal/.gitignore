@@ -1,0 +1,10 @@
+/logs
+.classpath
+*.dot
+/.settings/
+/target
+/.idea
+*.java_new
+*.iml
+/src/test/resources/LarsSqliEx
+/whitesource

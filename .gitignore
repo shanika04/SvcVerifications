@@ -1,0 +1,9 @@
+/logs
+.classpath
+*.dot
+/.settings/
+/target
+/.idea
+*.java_new
+*.iml
+/whitesource
