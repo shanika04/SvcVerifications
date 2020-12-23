@@ -26,14 +26,13 @@
       <artifactId>hibernate-core</artifactId>
       <version>5.4.21.Final</version>
     </dependency>
-    <!--
+<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
-      <version>3.0.1</version>
+      <version>3.0-alpha-1</version>
       <scope>provided</scope>
     </dependency>
-    --> 
     <dependency>
       <groupId>org.owasp.encoder</groupId>
       <artifactId>encoder</artifactId>
