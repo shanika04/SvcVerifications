@@ -11,10 +11,15 @@ public class PTTest5 {
             if (myFile
                     .getCanonicalPath()
                     .startsWith(new File("/users/sk/profiles/").getCanonicalPath())) {
-                throw new PathTraversalException("invalid file path entered");
+                throw new Exception("invalid file path entered");
             }
             delFile(myFile);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
+
+    private void delFile(File f) {
+        f.delete();
+    }
+}

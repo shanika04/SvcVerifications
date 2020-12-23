@@ -11,9 +11,9 @@ public class XXESource {
   private void source(String filename) throws XMLStreamException {
     XMLInputFactory inputFactory = XMLInputFactory.newInstance();
     // Restriction of XML External Entity Reference (CWE 611)
-    inputFactory.setProperty(XMLInputFactory.ACCESS_EXTERNAL_DTD, false);
+    inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
     // Restriction of XML External Entity Reference (CWE 611)
-    inputFactory.setProperty(XMLInputFactory.ACCESS_EXTERNAL_SCHEMA, false);
+    inputFactory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
     new FactorySink().getXml(filename, inputFactory);
   }
 }

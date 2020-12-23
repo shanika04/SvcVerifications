@@ -10,7 +10,7 @@ public class PTTest1 {
     try {
       File dictionaryFile = new File(BASE_DIRECTORY, filename);
       if (dictionaryFile.getCanonicalPath().startsWith(new File("src").getCanonicalPath())) {
-        throw new PathTraversalException("invalid file path entered");
+        throw new Exception("invalid file path entered");
       }
       dictionaryFile.delete();
     } catch (Exception ex) {

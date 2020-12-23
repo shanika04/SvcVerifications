@@ -12,7 +12,7 @@ public class PTTest8 {
       if (new File(dirpath + filename)
           .getCanonicalPath()
           .startsWith(new File("tempdir/" + "src/").getCanonicalPath())) {
-        throw new PathTraversalException("invalid file path entered");
+        throw new Exception("invalid file path entered");
       }
       new File(dirpath + filename).delete();
     } catch (Exception ex) {

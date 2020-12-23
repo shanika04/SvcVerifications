@@ -10,7 +10,6 @@ public class SQLTest15 {
 
   public void sqlTest15(boolean addExt, String ip) {
     String ipUnsafe = null;
-    String ipUnsafe = null;
     if (addExt) {
       ipUnsafe = ip;
       ip = "?" + ".a";

@@ -14,9 +14,9 @@ public class XMLInputFactoryTest1 {
 
       XMLInputFactory inputFactory = XMLInputFactory.newInstance();
       // Restriction of XML External Entity Reference (CWE 611)
-      inputFactory.setProperty(XMLInputFactory.ACCESS_EXTERNAL_DTD, false);
+      inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
       // Restriction of XML External Entity Reference (CWE 611)
-      inputFactory.setProperty(XMLInputFactory.ACCESS_EXTERNAL_SCHEMA, false);
+      inputFactory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
       XMLStreamReader reader = inputFactory.createXMLStreamReader(new FileInputStream(filename));
       int eventCounter = 0;
       while (reader.hasNext()) {

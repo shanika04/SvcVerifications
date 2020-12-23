@@ -14,7 +14,7 @@ public class PTTest9 {
       if (new File(s + filename)
           .getCanonicalPath()
           .startsWith(new File("srcqqq" + "name").getCanonicalPath())) {
-        throw new PathTraversalException("invalid file path entered");
+        throw new Exception("invalid file path entered");
       }
       new File(s + filename).delete();
     } catch (Exception ex) {
