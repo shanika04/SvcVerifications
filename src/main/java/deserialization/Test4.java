@@ -13,7 +13,7 @@ import java.io.ObjectInputStream;
 public class Test4 {
   // A whitelist of authorized objects
 
-  private Set<String> wssWhiteList =
+  private Set<String> wl =
       new HashSet<>(
           Arrays.asList(
               "deserialization.ObjectClass",
@@ -25,17 +25,17 @@ public class Test4 {
       throws IOException, InterruptedException, ClassNotFoundException {
 
     // Replaced deserialization class with a safe version
-    ObjectInputStream in = new WssObjectInputStream(fileIS, wssWhiteList);
+    ObjectInputStream in = new BetterObjectInputStream(fileIS, wl);
     ParentClass button = (ParentClass) in.readObject();
     ObjectClass specificButton = (ObjectClass) button;
     in.close();
   }
 
-  private static class WssObjectInputStream extends ObjectInputStream {
+  private static class BetterObjectInputStream extends ObjectInputStream {
     public Set<String> classesWhiteList;
     private Set<String> subPackagesWhiteList = new HashSet<>(Arrays.asList("java.lang"));
 
-    public WssObjectInputStream(InputStream inputStream, Set<String> classesWhiteList)
+    public BetterObjectInputStream(InputStream inputStream, Set<String> classesWhiteList)
         throws IOException {
       super(inputStream);
       this.classesWhiteList = classesWhiteList;

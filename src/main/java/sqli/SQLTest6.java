@@ -10,7 +10,7 @@ public class SQLTest6 {
 
   public void sqlTest6(String ip) {
     try {
-      PreparedStatement wssPreparedStatement =
+      PreparedStatement myPreparedStatement =
           getJDBCConnection()
               .prepareStatement(
                   "INSERT INTO banned_ip(id, ip) VALUE('"
@@ -19,8 +19,8 @@ public class SQLTest6 {
                       + "?"
                       + "')");
       // Setting the query parameters
-      wssPreparedStatement.setString(1, ip);
-      wssPreparedStatement.execute();
+      myPreparedStatement.setString(1, ip);
+      myPreparedStatement.execute();
     } catch (SQLException exception) {
       exception.printStackTrace();
     }

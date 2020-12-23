@@ -13,7 +13,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 public class Test2 {
   // A whitelist of authorized objects
 
-  private Set<String> wssWhiteList =
+  private Set<String> wl =
       new HashSet<>(
           Arrays.asList(
               "org.xml.sax.helpers.XMLReaderFactory", "org.xml.sax.helpers.SecuritySupport"));
@@ -23,16 +23,16 @@ public class Test2 {
     // Replaced deserialization class with a safe version
     XMLReaderFactory xmlParser =
         (XMLReaderFactory)
-            new WssObjectInputStream(new FileInputStream(file), wssWhiteList).readObject();
+            new BetterObjectInputStream(new FileInputStream(file), wl).readObject();
     XMLReaderFactory xmlParser_two = (XMLReaderFactory) xmlParser;
     in.close();
   }
 
-  private static class WssObjectInputStream extends ObjectInputStream {
+  private static class BetterObjectInputStream extends ObjectInputStream {
     public Set<String> classesWhiteList;
     private Set<String> subPackagesWhiteList = new HashSet<>(Arrays.asList("java.lang"));
 
-    public WssObjectInputStream(InputStream inputStream, Set<String> classesWhiteList)
+    public BetterObjectInputStream(InputStream inputStream, Set<String> classesWhiteList)
         throws IOException {
       super(inputStream);
       this.classesWhiteList = classesWhiteList;

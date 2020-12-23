@@ -13,7 +13,7 @@ public class SQLTest8 {
     ipUnsafe = ip;
     ip = "?" + ".a";
     try {
-      PreparedStatement wssPreparedStatement =
+      PreparedStatement myPreparedStatement =
           getJDBCConnection()
               .prepareStatement(
                   "INSERT INTO banned_ip(id, ip) VALUE('"
@@ -22,8 +22,8 @@ public class SQLTest8 {
                       + ip
                       + "')");
       // Setting the query parameters
-      wssPreparedStatement.setString(1, ipUnsafe);
-      wssPreparedStatement.execute();
+      myPreparedStatement.setString(1, ipUnsafe);
+      myPreparedStatement.execute();
     } catch (SQLException exception) {
       exception.printStackTrace();
     }

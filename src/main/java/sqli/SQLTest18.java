@@ -16,10 +16,10 @@ public class SQLTest18 {
               + "','"
               + "?"
               + "')";
-      PreparedStatement wssPreparedStatement = getJDBCConnection().prepareStatement(sql);
+      PreparedStatement myPreparedStatement = getJDBCConnection().prepareStatement(sql);
       // Setting the query parameters
-      wssPreparedStatement.setString(1, ip);
-      wssPreparedStatement.execute();
+      myPreparedStatement.setString(1, ip);
+      myPreparedStatement.execute();
     } catch (SQLException exception) {
       exception.printStackTrace();
     }

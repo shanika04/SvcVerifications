@@ -15,7 +15,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 public class Test1 {
   // A whitelist of authorized objects
 
-  private Set<String> wssWhiteList =
+  private Set<String> wl =
       new HashSet<>(
           Arrays.asList(
               "org.xml.sax.helpers.XMLReaderFactory", "org.xml.sax.helpers.SecuritySupport"));
@@ -23,17 +23,17 @@ public class Test1 {
   public void test(File file) throws IOException, InterruptedException, ClassNotFoundException {
 
     // Replaced deserialization class with a safe version
-    ObjectInputStream in = new WssObjectInputStream(new FileInputStream(file), wssWhiteList);
+    ObjectInputStream in = new BetterObjectInputStream(new FileInputStream(file), wl);
     XMLReaderFactory xmlParser = (XMLReaderFactory) in.readObject();
     XMLReaderFactory xmlParser_two = (XMLReaderFactory) xmlParser;
     in.close();
   }
 
-  private static class WssObjectInputStream extends ObjectInputStream {
+  private static class BetterObjectInputStream extends ObjectInputStream {
     public Set<String> classesWhiteList;
     private Set<String> subPackagesWhiteList = new HashSet<>(Arrays.asList("java.lang"));
 
-    public WssObjectInputStream(InputStream inputStream, Set<String> classesWhiteList)
+    public BetterObjectInputStream(InputStream inputStream, Set<String> classesWhiteList)
         throws IOException {
       super(inputStream);
       this.classesWhiteList = classesWhiteList;
