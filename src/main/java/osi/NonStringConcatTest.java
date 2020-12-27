@@ -18,7 +18,7 @@ public class NonStringConcatTest {
     }
 
     /* POTENTIAL FLAW: command injection */
-    String var = osCommand + encodeForOS(data)
+    String var = osCommand + encodeForOS(data);
     Process process = Runtime.getRuntime().exec(var);
     process.waitFor();
   }
