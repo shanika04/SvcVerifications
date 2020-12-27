@@ -17,7 +17,6 @@ public class NonStringConcatTest {
       osCommand = "/bin/ls ";
     }
 
-    /* POTENTIAL FLAW: command injection */
     String var = osCommand + encodeForOS(data);
     Process process = Runtime.getRuntime().exec(var);
     process.waitFor();
